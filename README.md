@@ -1,5 +1,5 @@
 Comando para testar o JPA 
-> ir para asrc
+> ir para src
 
 > javac -cp "lib/*;src" -d bin src/view/Main.java
 
