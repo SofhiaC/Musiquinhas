@@ -25,7 +25,6 @@ public class LoginView extends Application {
 
         // Cores e dimensões principais
         Color fundo = Color.web("#2A2A2A");
-        Color roxoBotao = Color.web("#7E6FBB");
         Color branco = Color.WHITE;
 
         // Painel principal
