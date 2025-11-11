@@ -1,9 +1,128 @@
-Comando para testar o JPA 
-> ir para src
+# 🎵 Musiquinhas
 
-> javac -cp "lib/*;src" -d bin src/view/Main.java
+Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **H2 Database**.
 
-> java -cp "lib/*;bin" view.Main
---- 
+---
 
+## ⚡ Quick Start
 
+### Pré-requisitos
+- **Java 21+** instalado ([Download](https://www.oracle.com/java/technologies/downloads/#java21))
+- **Maven 3.8.9+** instalado ([Download](https://maven.apache.org/download.cgi))
+
+### Instruções de Setup
+
+1. **Clone o repositório:**
+   ```bash
+   git clone <seu-repositorio>
+   cd Musiquinhas
+   ```
+
+2. **Compile o projeto:**
+   ```bash
+   mvn clean compile
+   ```
+   Maven baixará automaticamente todas as dependências:
+   - ✅ JavaFX 21.0.4
+   - ✅ EclipseLink 4.0.8
+   - ✅ H2 Database 2.4.240
+   - ✅ Jakarta Persistence API
+
+3. **Execute a aplicação:**
+   ```bash
+   mvn exec:java
+   ```
+
+4. **Login com usuário de teste:**
+- Email: sofhia@email.com   
+Senha: 1234
+
+- Email: joao@email.com  
+Senha: senha123
+
+- Email: maria@email.com  
+Senha: maria456
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── controller/          # Lógica de negócio (autenticação, validações)
+├── dao/                 # Data Access Objects (acesso ao banco de dados)
+├── entities/            # Classes JPA que representam tabelas
+├── view/                # Interface gráfica JavaFX
+├── resources/           # Imagens e assets
+└── META-INF/            # Configuração JPA (persistence.xml)
+```
+
+---
+
+## 🛠️ Tecnologias
+
+| Componente | Versão |
+|---|---|
+| **Java** | 21 |
+| **JavaFX** | 21.0.4 |
+| **JPA/EclipseLink** | 4.0.8 |
+| **Jakarta Persistence** | 3.2.0 |
+| **H2 Database** | 2.4.240 |
+| **Build Tool** | Maven 3.8.9+ |
+
+---
+
+## 📚 Recursos Úteis
+
+- **Diagrama de Classes:** [Google Drive](https://drive.google.com/file/d/1RB2pSDZ7NxxXuDmupfmntSblDXcKu5tq/view?usp=sharing)
+- **Design (Figma):** [Protótipo](https://www.figma.com/design/ZbL1iXkfnI5Q0tlUnxnjfz/Untitled?node-id=0-1&t=6itlZXmDYFiaCuYs-1)
+
+---
+
+## 💡 Comandos Úteis
+
+| Comando | Descrição |
+|---|---|
+| `mvn clean compile` | Limpa e compila o projeto |
+| `mvn exec:java` | Executa a aplicação |
+| `mvn clean compile exec:java` | Limpa, compila e executa em um comando |
+
+---
+
+## 🔧 Troubleshooting
+
+### "Maven command not found"
+- Instale Maven: [maven.apache.org](https://maven.apache.org)
+- Adicione ao PATH: `C:\apache-maven-3.x.x\bin` (Windows) ou `/usr/local/bin` (Mac/Linux)
+
+### "Java version mismatch"
+- Instale Java 21: [oracle.com/java](https://www.oracle.com/java/technologies/downloads/#java21)
+- Verifique: `java -version`
+
+### "JavaFX not found"
+- Maven vai baixar automaticamente - não precisa fazer nada!
+- Se der erro, tente: `mvn clean compile -X` (modo debug)
+
+---
+
+## 📝 Nota
+
+O banco de dados é **em memória (H2)**, então:
+- ✅ Dados persistem **durante a sessão**
+- ❌ Dados são **perdidos** quando a aplicação fecha
+
+## 🗺️ Outros Manuais
+
+1. **Quer rodar?**
+   → Leia: `README.md` (esse arquivo)
+2. 
+
+3. **Tem problemas?**
+   → Leia: `MIDUP.md` (seção de problemas)
+
+4. **Quer entender a lógica?**
+   → Leia: `ARCHITECTURE.md`
+
+5. **Quer sabr como codar?**
+   → Leia: `CONTRIBUTING.md`
+---
