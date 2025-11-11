@@ -113,16 +113,29 @@ O banco de dados é **em memória (H2)**, então:
 
 ## 🗺️ Outros Manuais
 
-1. **Quer rodar?**
-   → Leia: `README.md` (esse arquivo)
-2. 
 
-3. **Tem problemas?**
-   → Leia: `MIDUP.md` (seção de problemas)
+1. **README.md** ← Esse arquivo
+   - Visão geral do projeto
+   - Quick start
 
-4. **Quer entender a lógica?**
-   → Leia: `ARCHITECTURE.md`
+2. **SETUP.md** ← Guia detalhado
+   - Instruções para Windows/Mac/Linux
+   - Troubleshooting
+   - Como adicionar ao PATH
 
-5. **Quer sabr como codar?**
-   → Leia: `CONTRIBUTING.md`
+3. **ARCHITECTURE.md** ← Entenda a estrutura
+   - Diagrama MVC
+   - Como adicionar funcionalidades
+   - Padrões de código
+
+4. **CONTRIBUTING.md** ← Aprenda a contribuir
+   - Padrões de código
+   - Como fazer um PR
+   - Estrutura do projeto
+
+5. **SESSAO.md** ← Entenda como implementar a sessão
+   - Padrão Singleton
+   - Como acessar dados do usuário em qualquer tela
+   - Exemplos de código
+
 ---
