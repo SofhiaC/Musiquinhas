@@ -137,7 +137,15 @@ public class HomeView extends Application {
         Button btnAvaliacoes = criarBotaoGrande("Avaliações");
 
         btnPlaylists.setOnAction(e -> System.out.println("Playlists clicado"));
-        btnAvaliacoes.setOnAction(e -> System.out.println("Avaliações clicado"));
+        btnAvaliacoes.setOnAction(e -> {
+            System.out.println("Avaliações clicado");
+
+            AvaliacaoView tela = new AvaliacaoView();
+            Stage stageAtual = (Stage) btnAvaliacoes.getScene().getWindow();
+
+            tela.start(stageAtual);
+        });
+
 
         linha1.getChildren().addAll(btnPlaylists, btnAvaliacoes);
 
