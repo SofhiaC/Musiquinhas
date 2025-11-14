@@ -26,17 +26,20 @@ import javafx.stage.Stage;
  */
 public class HomeView extends Application {
     private final SessionManager sessionManager = SessionManager.getInstance();
+    
+    private Stage stageRef;
+    private Label lblBemvindo;
 
     @Override
     public void start(Stage stage) {
         // Verificar se usuário está logado
         if (!sessionManager.isLogado()) {
             mostrarAlerta(Alert.AlertType.WARNING, "Acesso Negado", "Você deve estar logado para acessar esta tela.");
-            new LoginView().start(new Stage());
             return;
         }
 
         stage.setTitle("Musiquinhas - Home");
+        stageRef = stage;
 
         // Cores principais
         Color fundoEscuro = Color.web("#2A2A2A");
@@ -77,7 +80,7 @@ public class HomeView extends Application {
 
         // Título de boas-vindas
         String nomeUsuario = sessionManager.getNomeUsuario();
-        Label lblBemvindo = new Label("Bem-vindo(a), " + nomeUsuario + "!");
+        lblBemvindo = new Label("Bem-vindo(a), " + nomeUsuario + "!");
         lblBemvindo.setFont(Font.font("Arial", 28));
         lblBemvindo.setTextFill(branco);
 
@@ -90,8 +93,11 @@ public class HomeView extends Application {
         btnEditar.setOnMouseEntered(e -> btnEditar.setStyle("-fx-background-color: #9988DD; -fx-text-fill: #FFFFFF; -fx-font-size: 12; -fx-padding: 10; -fx-background-radius: 6;"));
         btnEditar.setOnMouseExited(e -> btnEditar.setStyle("-fx-background-color: #7E6FBB; -fx-text-fill: #FFFFFF; -fx-font-size: 12; -fx-padding: 10; -fx-background-radius: 6;"));
         
-        btnEditar.setOnAction(e -> System.out.println("Editar dados clicado"));
-
+        btnEditar.setOnAction(e -> {
+            // Fechar HomeView e abrir UsuarioView
+            stageRef.close();
+            new UsuarioView().start(new Stage());
+        });       
         // Espaçador para empurrar botão para direita
         Region espacador = new Region();
         HBox.setHgrow(espacador, Priority.ALWAYS);

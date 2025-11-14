@@ -29,7 +29,7 @@ public class LoginView extends Application {
 
         // Painel principal
         BorderPane root = new BorderPane();
-        root.setPrefSize(900, 600); // tamanho fixo grande
+        root.setPrefSize(1000, 700); // tamanho fixo grande
         root.setBackground(new Background(new BackgroundFill(fundo, CornerRadii.EMPTY, Insets.EMPTY)));
 
         // ---------- TOPO ----------
@@ -97,8 +97,12 @@ public class LoginView extends Application {
             if (u != null) {
                 // Usuário foi salvo na SessionManager automaticamente pelo controller
                 mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", "Bem-vindo, " + u.getNome() + "!");
-                new HomeView().start(new Stage());
-                stage.close();
+                // Abrir HomeView na MESMA Stage do LoginView
+                try {
+                    new HomeView().start(stage);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             } else {
                 mostrarAlerta(Alert.AlertType.ERROR, "Falha", "Credenciais inválidas.");
             }

@@ -48,4 +48,18 @@ public class UsuarioController {
     public void logout() {
         sessionManager.logout();
     }
+
+    /**
+     * Atualiza os dados do usuário no banco de dados
+     */
+    public void atualizarUsuario(Usuario usuario) {
+        usuarioDao.atualizar(usuario);
+    }
+
+    /**
+     * Deleta um usuário do banco de dados
+     */
+    public void deletarUsuario(Long usuarioId) {
+        usuarioDao.deletar(usuarioId);
+    }
 }
