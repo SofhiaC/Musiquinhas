@@ -10,6 +10,9 @@
         <class>entities.Usuario</class>
         <class>entities.Musica</class>
         <class>entities.Avaliacao</class>
+        <class>entities.Album</class>
+        <class>entities.Artista</class>
+
 
 
         <properties>
