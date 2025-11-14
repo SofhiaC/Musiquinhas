@@ -9,6 +9,8 @@
 
         <class>entities.Usuario</class>
         <class>entities.Musica</class>
+        <class>entities.Avaliacao</class>
+
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
