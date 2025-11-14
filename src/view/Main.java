@@ -2,6 +2,9 @@ package view;
 
 import controller.MusicaController;
 import controller.UsuarioController;
+
+import controller.AssinaturaController;
+
 /**
  * Entrypoint que inicia a aplicação JavaFX.
  */
@@ -13,6 +16,7 @@ public class Main {
         //instancia musicas
         MusicaController controller = new MusicaController();
         controller.inicializarMusicas();
+
         //chama a interface de login
         LoginView.main(args);
     }

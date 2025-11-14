@@ -1,5 +1,8 @@
 package view;
 
+import controller.AssinaturaController;
+import entities.Assinatura;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,29 +22,35 @@ public class AssinaturaView {
         Label titulo = new Label("Assine Musiquinhas Premium!");
         titulo.setStyle("-fx-font-size: 32px; -fx-text-fill: white;");
 
-        // ----- Layout Principal -----
-        VBox container = new VBox(40);
-        container.setAlignment(Pos.CENTER);
-
-        // ----- GRID COM 4 ASSINATURAS -----
+        // ----- Grid que vai receber os planos -----
         GridPane grid = new GridPane();
         grid.setHgap(40);
         grid.setVgap(40);
         grid.setAlignment(Pos.CENTER);
 
-        // Adiciona 4 planos no grid 2x2
-        grid.add(criarPlano("Plano Mensal", "Individual", "R$ 15,90/mês", "1 mês",
-                "Sem anúncios, músicas ilimitadas"), 0, 0);
+        // Carregar assinaturas do banco
+        AssinaturaController controller = new AssinaturaController();
+        controller.inicializarAssinaturas();
+        var assinaturas = controller.listarAssinaturas();
 
-        grid.add(criarPlano("Plano Duo", "Dupla", "R$ 14,90", "1 mês",
-                "Sem anúncios, áudio HD"), 1, 0);
+        // Adiciona as assinaturas no grid dinamicamente (2 colunas)
+        int col = 0;
+        int row = 0;
 
-        grid.add(criarPlano("Plano Família", "Para 5 pessoas", "R$ 29,90", "1 mês",
-                "2 contas, músicas ilimitadas"), 0, 1);
+        for (Assinatura a : assinaturas) {
 
-        grid.add(criarPlano("Plano Estudante", "Individual", "R$ 8,90", "1 mês",
-                "5 contas, áudio premium"), 1, 1);
+            grid.add(criarPlano(a), col, row);
 
+            col++;
+            if (col == 2) { // quando chegar na 2ª coluna, muda de linha
+                col = 0;
+                row++;
+            }
+        }
+
+        // ----- Container principal -----
+        VBox container = new VBox(40);
+        container.setAlignment(Pos.CENTER);
         container.getChildren().addAll(titulo, grid);
 
         // ----- Botão Voltar -----
@@ -49,7 +58,7 @@ public class AssinaturaView {
         btnVoltar.setStyle("-fx-background-color: #42327a; -fx-text-fill: white; -fx-padding: 10 20;");
         btnVoltar.setOnAction(e -> {
             HomeView home = new HomeView();
-            home.start(stage); // ← volta para a HOME no mesmo stage
+            home.start(stage);
         });
 
         HBox boxVoltar = new HBox(btnVoltar);
@@ -69,33 +78,33 @@ public class AssinaturaView {
     }
 
     // ----- Método para criar cada plano -----
-    private VBox criarPlano(String tituloPlano, String tipo, String preco, String meses, String beneficios) {
+    private VBox criarPlano(Assinatura a) {
 
         VBox box = new VBox(10);
         box.setAlignment(Pos.CENTER_LEFT);
         box.setPadding(new Insets(15));
         box.setStyle("-fx-background-color: #42327a; -fx-background-radius: 10;");
-        box.setPrefSize(350, 180); // <<< TAMANHO REDUZIDO
+        box.setPrefSize(350, 180);
 
-        Label lblTitulo = new Label(tituloPlano);
-        Label lblTipo = new Label(tipo);
-        Label lblPreco = new Label(preco);
-        Label lblMeses = new Label(meses);
-        Label lblBeneficios = new Label(beneficios);
+        Label lblTitulo = new Label(a.getNome());
+        Label lblTipo = new Label(a.getTipo());
+        Label lblPreco = new Label(a.getPreco());
+        Label lblDuracao = new Label(a.getDuracao());
+        Label lblBeneficios = new Label(a.getBeneficios());
 
         lblTitulo.setStyle("-fx-font-size: 20px; -fx-text-fill: white;");
         lblTipo.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
         lblPreco.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
-        lblMeses.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
+        lblDuracao.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
         lblBeneficios.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
 
         Button btnAssinar = new Button("Assinar");
         btnAssinar.setStyle("-fx-background-color: #bfa8ff; -fx-padding: 6 12; -fx-font-size: 14px;");
         btnAssinar.setOnAction(e -> {
-            System.out.println("Usuário assinou → " + tituloPlano);
+            System.out.println("Usuário assinou → " + a.getNome());
         });
 
-        box.getChildren().addAll(lblTitulo, lblTipo, lblPreco, lblMeses, lblBeneficios, btnAssinar);
+        box.getChildren().addAll(lblTitulo, lblTipo, lblPreco, lblDuracao, lblBeneficios, btnAssinar);
         return box;
     }
 }
