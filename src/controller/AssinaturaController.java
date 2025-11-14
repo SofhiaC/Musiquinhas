@@ -30,7 +30,7 @@ public class AssinaturaController {
             this.criarAssinatura("Plano Mensal", "Individual", "R$ 15,90/mês", "1 mês",
                     "Sem anúncios, músicas ilimitadas");
            // this.criarAssinatura("Plano Duo", "Dupla", "R$ 14,90", "1 mês",
-             //       "Sem anúncios, áudio HD");
+          //       "Sem anúncios, áudio HD");   
 
             System.out.println(assinaturaDao.listarTodos());
         } catch (Exception e) {
