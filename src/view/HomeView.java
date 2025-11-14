@@ -237,6 +237,7 @@ public class HomeView extends Application {
         alert.showAndWait();
     }
 
+    //testes
     public static void main(String[] args) {
         launch(args);
     }

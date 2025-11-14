@@ -9,20 +9,21 @@ public class UsuarioDAO {
         private static final EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("_musiquinhasPU");
 
+    //insert
     public void criar(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
         try {
-            em.getTransaction().begin();
-            em.persist(usuario);
-            em.getTransaction().commit();
+            em.getTransaction().begin(); //inicia a transação
+            em.persist(usuario); //coloca o objeto no contexto de persitencia
+            em.getTransaction().commit(); //confirma a transação
         } finally {
             em.close();
         }
         System.out.println(
-            Thread.currentThread().getContextClassLoader().getResource("META-INF/persistence.xml")
+            Thread.currentThread().getContextClassLoader().getResource("META-INF/persistence.xml") //verifica se o arquivo persistence.xml está sendo carregado corretamente
         );
     }
-
+    //select por pk (primary key)
     public Usuario buscarPorId(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -31,7 +32,7 @@ public class UsuarioDAO {
             em.close();
         }
     }
-
+    //select com filtro por email
     public Usuario buscarPorEmail(String email) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -43,7 +44,7 @@ public class UsuarioDAO {
             em.close();
         }
     }
-
+    //select * 
     public List<Usuario> listarTodos() {
         EntityManager em = emf.createEntityManager();
         try {
@@ -52,7 +53,7 @@ public class UsuarioDAO {
             em.close();
         }
     }
-
+    //update 
     public void atualizar(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -63,7 +64,7 @@ public class UsuarioDAO {
             em.close();
         }
     }
-
+    //delete
     public void deletar(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
