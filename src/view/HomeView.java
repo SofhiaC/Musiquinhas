@@ -136,7 +136,23 @@ public class HomeView extends Application {
         Button btnPlaylists = criarBotaoGrande("Playlists");
         Button btnAvaliacoes = criarBotaoGrande("Avaliações");
 
-        btnPlaylists.setOnAction(e -> System.out.println("Playlists clicado"));
+        btnPlaylists.setOnAction(e -> {
+            System.out.println("Playlists clicado");
+            PlaylistView tela = new PlaylistView();
+            Stage stageAtual = (Stage) btnPlaylists.getScene().getWindow();
+            try {
+                // tenta abrir usando o stage atual
+                tela.start(stageAtual);
+            } catch (Exception ex) {
+                // se falhar, tenta abrir em uma nova janela para não deixar o botão sem ação
+                ex.printStackTrace();
+                try {
+                    tela.start(new Stage());
+                } catch (Exception ex2) {
+                    ex2.printStackTrace();
+                }
+            }
+        });
         btnAvaliacoes.setOnAction(e -> {
             System.out.println("Avaliações clicado");
 
