@@ -13,37 +13,67 @@ public class Musica {
     @Column(nullable = false)
     private String titulo;
 
-    private String artista;
-
+    @Column(nullable = false)
     private Integer duracao; // em segundos
+
+    @ManyToOne
+    @JoinColumn(name = "id_album", nullable = false)
+    private Album album;
 
     public Musica() {}
 
-    public Musica(String titulo, String artista, Integer duracao) {
+    public Musica(String titulo, Integer duracao, Album album) {
         this.titulo = titulo;
-        this.artista = artista;
+        this.duracao = duracao;
+        this.album = album;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Integer getDuracao() {
+        return duracao;
+    }
+    public void setDuracao(Integer duracao) {
         this.duracao = duracao;
     }
 
-    // Getters e Setters
-    public Long getId() { return id; }
-
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
-
-    public String getArtista() { return artista; }
-    public void setArtista(String artista) { this.artista = artista; }
-
-    public Integer getDuracao() { return duracao; }
-    public void setDuracao(Integer duracao) { this.duracao = duracao; }
+    public Album getAlbum() {
+        return album;
+    }
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
     @Override
     public String toString() {
         return "Musica{" +
-               "id=" + id +
-               ", titulo='" + titulo + '\'' +
-               ", artista='" + artista + '\'' +
-               ", duracao=" + duracao +
-               '}';
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", duracao=" + duracao +
+                ", album=" + (album != null ? album.getTitulo() : "null") +
+                '}';
     }
+
+    public void inicializarMusicas() {
+        try {
+            criarMusica("Bad Romance", "Lady Gaga", 290);
+            criarMusica("Poker Face", "Lady Gaga", 240);
+
+            criarMusica("Dormi na Praça", "Bruno & Marrone", 280);
+            criarMusica("Choram as Rosas", "Bruno & Marrone", 260);
+
+        } catch (Exception e) {
+            System.out.println("Erro ao criar músicas: " + e.getMessage());
+        }
+    }
+
 }

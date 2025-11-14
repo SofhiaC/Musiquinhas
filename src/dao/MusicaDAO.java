@@ -2,12 +2,12 @@ package dao;
 
 import entities.Musica;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 public class MusicaDAO {
+
     private static final EntityManagerFactory emf =
-        Persistence.createEntityManagerFactory("_musiquinhasPU");
+            Persistence.createEntityManagerFactory("_musiquinhasPU");
 
     public void criar(Musica musica) {
         EntityManager em = emf.createEntityManager();
@@ -15,10 +15,6 @@ public class MusicaDAO {
             em.getTransaction().begin();
             em.persist(musica);
             em.getTransaction().commit();
-            System.out.println("Música inserida: " + musica.getTitulo() + " - " + musica.getArtista());
-        } catch (Exception e) {
-            System.out.println("Erro ao inserir música: " + e.getMessage());
-            e.printStackTrace();
         } finally {
             em.close();
         }
@@ -36,7 +32,8 @@ public class MusicaDAO {
     public List<Musica> listarTodas() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createQuery("SELECT m FROM Musica m", Musica.class).getResultList();
+            return em.createQuery("SELECT m FROM Musica m", Musica.class)
+                     .getResultList();
         } finally {
             em.close();
         }
@@ -58,9 +55,7 @@ public class MusicaDAO {
         try {
             em.getTransaction().begin();
             Musica musica = em.find(Musica.class, id);
-            if (musica != null) {
-                em.remove(musica);
-            }
+            if (musica != null) em.remove(musica);
             em.getTransaction().commit();
         } finally {
             em.close();
