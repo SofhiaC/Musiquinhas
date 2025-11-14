@@ -10,6 +10,8 @@
         <class>entities.Usuario</class>
         <class>entities.Musica</class>
         <class>entities.Avaliacao</class>
+        <class>entities.Playlist</class>
+        <class>entities.MontagemPlaylist</class>
 
 
         <properties>
