@@ -148,7 +148,11 @@ public class HomeView extends Application {
         Button btnAssinatura = criarBotaoGrande("Assinatura");
         Button btnAlbuns = criarBotaoGrande("Álbuns");
 
-        btnAssinatura.setOnAction(e -> System.out.println("Assinatura clicado"));
+        btnAssinatura.setOnAction(e -> {
+            AssinaturaView tela = new AssinaturaView();
+            tela.start((Stage) btnAssinatura.getScene().getWindow());
+        });
+
         btnAlbuns.setOnAction(e -> System.out.println("Álbuns clicado"));
 
         linha2.getChildren().addAll(btnAssinatura, btnAlbuns);
