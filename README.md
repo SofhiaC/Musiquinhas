@@ -1,6 +1,6 @@
 # 🎵 Musiquinhas
 
-Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **H2 Database**.
+Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
 
 ---
 
@@ -18,18 +18,14 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **H2 Database**.
    cd Musiquinhas
    ```
 
-2. **Compile o projeto:**
+2. **Compile e execute o projeto:**
+   ````
+   Execute Main.java com Java 21+ 
+   ````
+   Ou use o Maven: 
    ```bash
    mvn clean compile
-   ```
-   Maven baixará automaticamente todas as dependências:
-   - ✅ JavaFX 21.0.4
-   - ✅ EclipseLink 4.0.8
-   - ✅ H2 Database 2.4.240
-   - ✅ Jakarta Persistence API
 
-3. **Execute a aplicação:**
-   ```bash
    mvn exec:java
    ```
 
@@ -43,19 +39,6 @@ Senha: senha123
 - Email: maria@email.com  
 Senha: maria456
 
----
-
-## 📁 Estrutura do Projeto
-
-```
-src/
-├── controller/          # Lógica de negócio (autenticação, validações)
-├── dao/                 # Data Access Objects (acesso ao banco de dados)
-├── entities/            # Classes JPA que representam tabelas
-├── view/                # Interface gráfica JavaFX
-├── resources/           # Imagens e assets
-└── META-INF/            # Configuração JPA (persistence.xml)
-```
 
 ---
 
@@ -67,7 +50,7 @@ src/
 | **JavaFX** | 21.0.4 |
 | **JPA/EclipseLink** | 4.0.8 |
 | **Jakarta Persistence** | 3.2.0 |
-| **H2 Database** | 2.4.240 |
+| **MySQL Connector/J** | 8.4.0 |
 | **Build Tool** | Maven 3.8.9+ |
 
 ---
@@ -77,15 +60,6 @@ src/
 - **Diagrama de Classes:** [Google Drive](https://drive.google.com/file/d/1RB2pSDZ7NxxXuDmupfmntSblDXcKu5tq/view?usp=sharing)
 - **Design (Figma):** [Protótipo](https://www.figma.com/design/ZbL1iXkfnI5Q0tlUnxnjfz/Untitled?node-id=0-1&t=6itlZXmDYFiaCuYs-1)
 
----
-
-## 💡 Comandos Úteis
-
-| Comando | Descrição |
-|---|---|
-| `mvn clean compile` | Limpa e compila o projeto |
-| `mvn exec:java` | Executa a aplicação |
-| `mvn clean compile exec:java` | Limpa, compila e executa em um comando |
 
 ---
 
@@ -105,37 +79,15 @@ src/
 
 ---
 
-## 📝 Nota
+## Sobre o MY\ySQL
 
-O banco de dados é **em memória (H2)**, então:
-- ✅ Dados persistem **durante a sessão**
-- ❌ Dados são **perdidos** quando a aplicação fecha
+Crie o banco de dados `musiquinhas` no mySQL antes de rodar o projeto.
 
-## 🗺️ Outros Manuais
+```sql
+CREATE DATABASE musiquinhas;
+```
 
+> [!WARNING]
+> Caso seu banco não rode na porta padrão (3306), ajuste a URL de conexão no arquivo `persistence.xml`. Também não esqueça de configurar o usuário e senha do banco nesse mesmo arquivo.
 
-1. **README.md** ← Esse arquivo
-   - Visão geral do projeto
-   - Quick start
-
-2. **SETUP.md** ← Guia detalhado
-   - Instruções para Windows/Mac/Linux
-   - Troubleshooting
-   - Como adicionar ao PATH
-
-3. **ARCHITECTURE.md** ← Entenda a estrutura
-   - Diagrama MVC
-   - Como adicionar funcionalidades
-   - Padrões de código
-
-4. **CONTRIBUTING.md** ← Aprenda a contribuir
-   - Padrões de código
-   - Como fazer um PR
-   - Estrutura do projeto
-
-5. **SESSAO.md** ← Entenda como implementar a sessão
-   - Padrão Singleton
-   - Como acessar dados do usuário em qualquer tela
-   - Exemplos de código
-
----
+--- 

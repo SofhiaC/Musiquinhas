@@ -133,7 +133,7 @@ public class LoginView extends Application {
 
     private ImageView carregarLogo() {
         try {
-            Image img = new Image(getClass().getResourceAsStream("./src/images/Musiquinhas.png"));
+            Image img = new Image(getClass().getResourceAsStream("/resources/Musiquinhas.png"));
             ImageView view = new ImageView(img);
             view.setPreserveRatio(true);
             view.setFitWidth(400);
