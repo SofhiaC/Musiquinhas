@@ -9,6 +9,7 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
 ### Pré-requisitos
 - **Java 21+** instalado ([Download](https://www.oracle.com/java/technologies/downloads/#java21))
 - **Maven 3.8.9+** instalado ([Download](https://maven.apache.org/download.cgi))
+- **MySQL Workbench** ou outro cliente MySQL instalado e configurado ([Download](https://dev.mysql.com/downloads/workbench/))
 
 ### Instruções de Setup
 
