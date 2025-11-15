@@ -18,6 +18,9 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
    git clone <seu-repositorio>
    cd Musiquinhas
    ```
+3. Configure o banco de dados MySQL
+
+   Siga as instruções na seção "Sobre o MySQL" no fim desse arquivo para criar o banco de dados necessário.
 
 2. **Compile e execute o projeto:**
    ````
@@ -80,7 +83,7 @@ Senha: maria456
 
 ---
 
-## Sobre o MY\ySQL
+## Sobre o MySQL
 
 Crie o banco de dados `musiquinhas` no mySQL antes de rodar o projeto.
 
