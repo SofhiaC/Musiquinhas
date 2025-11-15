@@ -1,7 +1,7 @@
 package dao;
 
-import entities.Usuario;
 import jakarta.persistence.*;
+import entities.Usuario;
 
 import java.util.List;
 

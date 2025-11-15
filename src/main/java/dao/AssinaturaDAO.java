@@ -1,7 +1,7 @@
 package dao;
 
-import entities.Assinatura;
 import jakarta.persistence.*;
+import entities.Assinatura;
 
 import java.util.List;
 

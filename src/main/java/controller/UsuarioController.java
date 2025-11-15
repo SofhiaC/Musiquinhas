@@ -69,7 +69,7 @@ public class UsuarioController {
      */
     public void inicializarDadosTeste() {
         try {
-            dao.UsuarioDAO dao = new dao.UsuarioDAO();
+            UsuarioDAO dao = new UsuarioDAO();
             
             // Verificar se existem usuários
             var usuarios = dao.listarTodos();

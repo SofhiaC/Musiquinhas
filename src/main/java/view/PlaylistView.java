@@ -1,9 +1,5 @@
 package view;
 
-import controller.PlaylistController;
-import controller.SessionManager;
-import entities.Playlist;
-import entities.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -16,6 +12,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import controller.PlaylistController;
+import controller.SessionManager;
+import entities.Playlist;
+import entities.Usuario;
 
 public class PlaylistView extends javafx.application.Application {
 
@@ -184,7 +184,7 @@ public class PlaylistView extends javafx.application.Application {
 
     private ImageView carregarLogo(double tamanho) {
         try {
-            Image img = new Image(getClass().getResourceAsStream("/resources/Musiquinhas.png"));
+            Image img = new Image(getClass().getResourceAsStream("/images/Musiquinhas.png"));
             ImageView view = new ImageView(img);
             view.setFitWidth(tamanho);
             view.setPreserveRatio(true);

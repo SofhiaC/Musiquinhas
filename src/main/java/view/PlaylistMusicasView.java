@@ -1,8 +1,5 @@
 package view;
 
-import controller.PlaylistController;
-import entities.Musica;
-import entities.Playlist;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -11,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import controller.PlaylistController;
+import entities.Musica;
+import entities.Playlist;
 import javafx.application.Application;
 
 public class PlaylistMusicasView extends Application {

@@ -1,19 +1,16 @@
 package controller;
 
-import dao.PlaylistDAO;
-import dao.MontagemPlaylistDAO;
-import dao.MusicaDAO;
-
-import entities.Playlist;
-import entities.Usuario;
-import entities.Musica;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+import dao.MontagemPlaylistDAO;
+import dao.MusicaDAO;
+import dao.PlaylistDAO;
+import entities.Musica;
+import entities.Playlist;
+import entities.Usuario;
 import view.PlaylistMusicasView;
 
 import java.util.List;

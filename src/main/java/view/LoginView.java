@@ -1,7 +1,5 @@
 package view;
 
-import controller.UsuarioController;
-import entities.Usuario;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +10,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import controller.UsuarioController;
+import entities.Usuario;
 
 public class LoginView extends Application {
     private final UsuarioController controller = new UsuarioController();
@@ -133,7 +133,7 @@ public class LoginView extends Application {
 
     private ImageView carregarLogo() {
         try {
-            Image img = new Image(getClass().getResourceAsStream("/resources/Musiquinhas.png"));
+            Image img = new Image(getClass().getResourceAsStream("./src/images/Musiquinhas.png"));
             ImageView view = new ImageView(img);
             view.setPreserveRatio(true);
             view.setFitWidth(400);

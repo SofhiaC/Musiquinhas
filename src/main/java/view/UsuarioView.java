@@ -1,9 +1,5 @@
 package view;
 
-import controller.UsuarioController;
-import controller.SessionManager;
-import entities.Usuario;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import controller.SessionManager;
+import controller.UsuarioController;
+import entities.Usuario;
 
 /**
  * Tela de configuração de conta do usuário.

@@ -1,6 +1,5 @@
 package view;
 
-import controller.SessionManager;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import controller.SessionManager;
 
 /**
  * Tela Home após o login.
@@ -230,7 +230,7 @@ public class HomeView extends Application {
      */
     private ImageView carregarLogo(double tamanho) {
         try {
-            Image img = new Image(getClass().getResourceAsStream("/resources/Musiquinhas.png"));
+            Image img = new Image(getClass().getResourceAsStream("/images/Musiquinhas.png"));
             ImageView view = new ImageView(img);
             view.setPreserveRatio(true);
             view.setFitWidth(tamanho);

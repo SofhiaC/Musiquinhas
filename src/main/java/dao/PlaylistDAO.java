@@ -1,9 +1,10 @@
 package dao;
 
-import entities.Playlist;
-import entities.Musica;
-import entities.Usuario;
 import jakarta.persistence.*;
+import entities.Musica;
+import entities.Playlist;
+import entities.Usuario;
+
 import java.util.List;
 
 public class PlaylistDAO {
