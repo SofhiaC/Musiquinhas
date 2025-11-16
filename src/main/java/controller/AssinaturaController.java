@@ -8,7 +8,7 @@ import java.util.List;
 public class AssinaturaController {
     private final AssinaturaDAO assinaturaDao = new AssinaturaDAO();
 
-    public void criarAssinatura(String nome, String tipo, String preco, String duracao, String beneficios) {
+    public void criarAssinatura(String nome, String tipo, double preco, String duracao, String beneficios) {
         Assinatura assinatura = new Assinatura(nome, tipo, preco, duracao, beneficios);
         assinaturaDao.criar(assinatura);
     }
@@ -25,17 +25,5 @@ public class AssinaturaController {
         return assinaturaDao.listarTodos();
     }
 
-    public void inicializarAssinaturas() {
-        try {
-            this.criarAssinatura("Plano Mensal", "Individual", "R$ 15,90/mês", "1 mês",
-                    "Sem anúncios, músicas ilimitadas");
-           // this.criarAssinatura("Plano Duo", "Dupla", "R$ 14,90", "1 mês",
-             //       "Sem anúncios, áudio HD");
-
-            System.out.println(assinaturaDao.listarTodos());
-        } catch (Exception e) {
-            System.out.println("Erro ao criar assinaturas: " + e.getMessage());
-        }
-    }
 
 }

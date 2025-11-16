@@ -177,7 +177,10 @@ public class HomeView extends Application {
             tela.start((Stage) btnAssinatura.getScene().getWindow());
         });
 
-        btnAlbuns.setOnAction(e -> System.out.println("Álbuns clicado"));
+        btnAlbuns.setOnAction(e -> {
+            ArtistaView tela = new ArtistaView();
+            tela.start((Stage) btnAlbuns.getScene().getWindow());
+        });
 
         linha2.getChildren().addAll(btnAssinatura, btnAlbuns);
 

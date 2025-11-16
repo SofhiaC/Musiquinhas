@@ -13,13 +13,13 @@ public class Assinatura {
 
     private String nome;
     private String tipo;
-    private String preco;
+    private double preco;
     private String duracao;
     private String beneficios;
 
     public Assinatura(){}
 
-    public Assinatura(String nome, String tipo, String preco, String duracao, String beneficios) {
+    public Assinatura(String nome, String tipo, double preco, String duracao, String beneficios) {
         this.nome = nome;
         this.tipo = tipo;
         this.preco = preco;

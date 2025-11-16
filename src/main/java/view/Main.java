@@ -1,19 +1,14 @@
 package view;
 
-import controller.AssinaturaController;
-import controller.MusicaController;
-import controller.UsuarioController;
+import seed.Seed;
 
 /**
  * Entrypoint que inicia a aplicação JavaFX.
  */
 public class Main {
     public static void main(String[] args) {
-        // Inicializar dados de teste se banco estiver vazio
-        UsuarioController usuarioController = new UsuarioController();
-        usuarioController.inicializarDadosTeste();
-        //instancia musicas
-
+        //Seed.popularBancoSeVazio(); // insere dados apenas se estiver vazio
+        //PARA TESTAR SE SUA SEED FUNCIONOU, DESCOMENTE ACIMA E SE NECESSÁRIO COMENTE AS OUTRAS SEEDS QUE TIVEREM ERRO
 
         //chama a interface de login
         LoginView.main(args);

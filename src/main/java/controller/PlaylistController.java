@@ -11,6 +11,7 @@ import dao.PlaylistDAO;
 import entities.Musica;
 import entities.Playlist;
 import entities.Usuario;
+import jakarta.persistence.EntityManager;
 import view.PlaylistMusicasView;
 
 import java.util.List;
@@ -52,16 +53,8 @@ public class PlaylistController {
         }
     }
 
-
-    private void carregarPlaylists() {
-        List<Playlist> listas = usuarioAtual == null ?
-                List.of() : playlistDAO.listarPlaylistsDoUsuario(usuarioAtual.getId());
-
-        playlistsObservable = FXCollections.observableArrayList(listas);
-
-        if (listViewPlaylists != null) {
-            listViewPlaylists.setItems(playlistsObservable);
-        }
+    public List<Playlist> listarPlaylists() {
+        return playlistDAO.listarTodas();
     }
 
     @FXML

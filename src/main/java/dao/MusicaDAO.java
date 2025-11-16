@@ -15,7 +15,7 @@ public class MusicaDAO {
             em.getTransaction().begin();
             em.persist(musica);
             em.getTransaction().commit();
-            System.out.println("Música inserida: " + musica.getTitulo() + " - " + musica.getArtista());
+            System.out.println("Música inserida: " +musica.getTitulo());
         } catch (Exception e) {
             System.out.println("Erro ao inserir música: " + e.getMessage());
             e.printStackTrace();
@@ -42,11 +42,11 @@ public class MusicaDAO {
         }
     }
 
-    public void atualizar(Musica musica) {
+    public void atualizar(Long id, String titulo, int duracao, Long idAlbumLong, Long idArtistaLong) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(musica);
+            em.merge(em.find (Musica.class, id));
             em.getTransaction().commit();
         } finally {
             em.close();
