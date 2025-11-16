@@ -1,7 +1,6 @@
 package dao;
 
 import entities.Artista;
-import entities.Avaliacao;
 import jakarta.persistence.*;
 import java.util.List;
 

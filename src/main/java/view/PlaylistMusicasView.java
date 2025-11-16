@@ -11,24 +11,33 @@ import javafx.stage.Stage;
 import controller.PlaylistController;
 import entities.Musica;
 import entities.Playlist;
-import javafx.application.Application;
+import entities.Usuario;
 
-public class PlaylistMusicasView extends Application {
+/**
+ * Tela para visualizar e gerenciar músicas de uma playlist.
+ * Agora não estende Application, usa initStage(Stage) para abrir a janela.
+ */
+public class PlaylistMusicasView {
 
     private Playlist playlist;
+    private Usuario usuarioAtual;
     private final PlaylistController controller = new PlaylistController();
 
-    private TableView<Musica> tabelaMusicasPlaylist;
+    private TableView<Musica> tabelaMusicas;
     private ComboBox<Musica> comboTodasMusicas;
 
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
     }
 
-    @Override
-    public void start(Stage stage) {
-        if (playlist == null) {
-            System.out.println("Playlist não definida!");
+    public void setUsuarioAtual(Usuario usuario) {
+        this.usuarioAtual = usuario;
+        controller.setUsuarioAtual(usuario);
+    }
+
+    public void initStage(Stage stage) {
+        if (playlist == null || usuarioAtual == null) {
+            System.out.println("Playlist ou usuário não definido!");
             return;
         }
 
@@ -38,24 +47,33 @@ public class PlaylistMusicasView extends Application {
         root.setPadding(new Insets(20));
 
         // Tabela de músicas da playlist
-        tabelaMusicasPlaylist = new TableView<>();
+        tabelaMusicas = new TableView<>();
+        tabelaMusicas.setPrefHeight(400);
         carregarMusicasDaPlaylist();
 
         TableColumn<Musica, String> colTitulo = new TableColumn<>("Título");
         colTitulo.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getTitulo()));
         colTitulo.setPrefWidth(250);
 
-        TableColumn<Musica, String> colArt = new TableColumn<>("Artista");
-        colArt.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getArtista()));
-        colArt.setPrefWidth(200);
+        TableColumn<Musica, String> colArtista = new TableColumn<>("Artista");
+        colArtista.setCellValueFactory(c -> {
+            String nomeArtista = "";
+            if (c.getValue().getAlbum() != null && c.getValue().getAlbum().getArtista() != null) {
+                nomeArtista = c.getValue().getAlbum().getArtista().getNome();
+            }
+            return new javafx.beans.property.SimpleStringProperty(nomeArtista);
+        });        
+        colArtista.setPrefWidth(200);
 
-        tabelaMusicasPlaylist.getColumns().addAll(colTitulo, colArt);
+        tabelaMusicas.getColumns().addAll(colTitulo, colArtista);
 
-        // Seletor de músicas
+        // ComboBox com todas as músicas
         comboTodasMusicas = new ComboBox<>();
-        comboTodasMusicas.setItems(FXCollections.observableArrayList(controller.listarTodasMusicas()));
+        ObservableList<Musica> todas = FXCollections.observableArrayList(controller.listarTodasMusicas());
+        comboTodasMusicas.setItems(todas);
         comboTodasMusicas.setPromptText("Selecione uma música para adicionar");
 
+        // Botões de adicionar/remover
         Button btnAdicionar = new Button("Adicionar Música");
         btnAdicionar.setOnAction(e -> adicionarMusica());
 
@@ -65,30 +83,36 @@ public class PlaylistMusicasView extends Application {
         HBox botoes = new HBox(10, comboTodasMusicas, btnAdicionar, btnRemover);
         botoes.setAlignment(Pos.CENTER_LEFT);
 
-        root.getChildren().addAll(new Label("Músicas da Playlist:"), tabelaMusicasPlaylist, botoes);
+        root.getChildren().addAll(new Label("Músicas da Playlist:"), tabelaMusicas, botoes);
 
-        stage.setScene(new Scene(root, 700, 500));
+        Scene scene = new Scene(root, 700, 500);
+        stage.setScene(scene);
         stage.show();
     }
 
     private void carregarMusicasDaPlaylist() {
-        ObservableList<Musica> obs =
-                FXCollections.observableArrayList(controller.listarMusicasDaPlaylist(playlist.getId()));
-        tabelaMusicasPlaylist.setItems(obs);
+        if (playlist != null) {
+            ObservableList<Musica> obs = FXCollections.observableArrayList(
+                    controller.listarMusicasDaPlaylist(playlist.getId())
+            );
+            tabelaMusicas.setItems(obs);
+        }
     }
 
     private void adicionarMusica() {
         Musica musica = comboTodasMusicas.getValue();
         if (musica == null) return;
 
+        // Adiciona via controller
         controller.adicionarMusicaNaPlaylist(playlist, musica);
         carregarMusicasDaPlaylist();
     }
 
     private void removerMusica() {
-        Musica musica = tabelaMusicasPlaylist.getSelectionModel().getSelectedItem();
+        Musica musica = tabelaMusicas.getSelectionModel().getSelectedItem();
         if (musica == null) return;
 
+        // Remove via controller
         controller.removerMusicaDaPlaylist(playlist, musica);
         carregarMusicasDaPlaylist();
     }

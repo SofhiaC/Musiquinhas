@@ -5,17 +5,19 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import controller.AssinaturaController;
 import entities.Assinatura;
 
+import java.util.List;
+
 public class AssinaturaView {
 
     public void start(Stage stage) {
+
+        AssinaturaController controller = new AssinaturaController();
+        List<Assinatura> assinaturas = controller.listarAssinaturas();
 
         // ----- Título -----
         Label titulo = new Label("Assine Musiquinhas Premium!");
@@ -32,7 +34,6 @@ public class AssinaturaView {
         int row = 0;
 
         for (Assinatura a : assinaturas) {
-
             grid.add(criarPlano(a), col, row);
 
             col++;
@@ -82,7 +83,7 @@ public class AssinaturaView {
 
         Label lblTitulo = new Label(a.getNome());
         Label lblTipo = new Label(a.getTipo());
-        Label lblPreco = new Label(a.getPreco());
+        Label lblPreco = new Label(String.valueOf(a.getPreco()));
         Label lblDuracao = new Label(a.getDuracao());
         Label lblBeneficios = new Label(a.getBeneficios());
 

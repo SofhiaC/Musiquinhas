@@ -3,7 +3,6 @@ package controller;
 import java.util.List;
 
 import dao.UsuarioDAO;
-import entities.Artista;
 import entities.Usuario;
 
 /**

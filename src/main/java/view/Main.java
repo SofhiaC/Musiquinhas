@@ -1,6 +1,5 @@
 package view;
 
-import seed.Seed;
 
 /**
  * Entrypoint que inicia a aplicação JavaFX.

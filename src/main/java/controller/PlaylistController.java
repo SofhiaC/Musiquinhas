@@ -57,6 +57,21 @@ public class PlaylistController {
         return playlistDAO.listarTodas();
     }
 
+    private void carregarPlaylists() {
+    if (usuarioAtual != null) {
+        List<Playlist> listas = playlistDAO.listarPlaylistsDoUsuario(usuarioAtual.getId());
+        if (playlistsObservable == null) {
+            playlistsObservable = FXCollections.observableArrayList(listas);
+        } else {
+            playlistsObservable.setAll(listas);
+        }
+
+        if (listViewPlaylists != null) {
+            listViewPlaylists.setItems(playlistsObservable);
+        }
+    }
+}
+
     @FXML
     private void criarPlaylist() {
         String nome = txtNomePlaylist.getText().trim();

@@ -25,7 +25,6 @@ public class PlaylistView extends javafx.application.Application {
     private TextField txtNomePlaylist;
     private TableView<Playlist> tabela;
     private ObservableList<Playlist> listaObs;
-
     private Stage stageRef;
 
     @Override
@@ -50,23 +49,24 @@ public class PlaylistView extends javafx.application.Application {
         root.setPadding(new Insets(20));
         root.setBackground(new Background(new BackgroundFill(fundo, CornerRadii.EMPTY, Insets.EMPTY)));
 
+        // topo com logo e título
         HBox topo = new HBox(10);
         topo.setAlignment(Pos.CENTER_LEFT);
-
         ImageView logo = carregarLogo(120);
         if (logo != null) topo.getChildren().add(logo);
 
         Label titulo = new Label("Minhas Playlists");
         titulo.setFont(Font.font("Arial", 22));
         titulo.setTextFill(branco);
-
         topo.getChildren().add(titulo);
+
         root.setTop(topo);
 
+        // centro com inputs e tabela
         VBox centro = new VBox(30);
         centro.setPadding(new Insets(20, 10, 10, 10));
 
-        // linha de criação de playlist
+        // criação de playlist
         HBox linhaInputs = new HBox(20);
         linhaInputs.setAlignment(Pos.CENTER_LEFT);
 
@@ -85,24 +85,20 @@ public class PlaylistView extends javafx.application.Application {
         linhaInputs.getChildren().addAll(txtNomePlaylist, btnCriar);
         centro.getChildren().add(linhaInputs);
 
-        // tabela
+        // tabela de playlists
         tabela = new TableView<>();
         tabela.setPrefHeight(400);
 
         TableColumn<Playlist, String> colNome = new TableColumn<>("Nome");
         colNome.setPrefWidth(350);
-        colNome.setCellValueFactory(data ->
-                new javafx.beans.property.SimpleStringProperty(data.getValue().getNome())
-        );
+        colNome.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getNome()));
 
         TableColumn<Playlist, String> colUsuario = new TableColumn<>("Usuário");
         colUsuario.setPrefWidth(200);
-        colUsuario.setCellValueFactory(data ->
-                new javafx.beans.property.SimpleStringProperty(
-                        data.getValue().getUsuario().getNome())
-        );
+        colUsuario.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
+                data.getValue().getUsuario().getNome()));
 
-        // ações
+        // ações da tabela
         TableColumn<Playlist, Void> colAcao = new TableColumn<>("Ação");
         colAcao.setPrefWidth(200);
 
@@ -125,9 +121,11 @@ public class PlaylistView extends javafx.application.Application {
                     System.out.println("Abrindo playlist: " + p.getNome());
 
                     // Abre a tela de gerenciamento de músicas
-                    PlaylistMusicasView playlistMusicasView = new PlaylistMusicasView();
-                    playlistMusicasView.setPlaylist(p);
-                    playlistMusicasView.start(new Stage());
+                    PlaylistMusicasView view = new PlaylistMusicasView();
+                    view.setPlaylist(p);
+                    view.setUsuarioAtual(session.getUsuarioLogado());
+                    Stage stageMusicas = new Stage();
+                    view.initStage(stageMusicas);
                 });
             }
 
@@ -145,6 +143,7 @@ public class PlaylistView extends javafx.application.Application {
 
         root.setCenter(centro);
 
+        // rodapé
         HBox rodape = new HBox();
         rodape.setAlignment(Pos.CENTER);
         rodape.setPadding(new Insets(10));
@@ -164,9 +163,9 @@ public class PlaylistView extends javafx.application.Application {
         stage.show();
     }
 
+    // cria playlist
     private void criarPlaylist() {
         String nome = txtNomePlaylist.getText().trim();
-
         if (nome.isEmpty()) {
             mostrarAlerta(Alert.AlertType.WARNING, "Validação", "Digite um nome para a playlist.");
             return;
@@ -177,6 +176,7 @@ public class PlaylistView extends javafx.application.Application {
         carregarPlaylists();
     }
 
+    // carrega playlists do usuário logado
     private void carregarPlaylists() {
         listaObs = FXCollections.observableArrayList(playlistController.listarPlaylistsDoUsuario());
         tabela.setItems(listaObs);
@@ -211,5 +211,4 @@ public class PlaylistView extends javafx.application.Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }
