@@ -35,8 +35,8 @@ public class Assinatura {
     public String getTipo() {return tipo;}
     public void setTipo(String tipo) {this.tipo = tipo;}
 
-    public String getPreco() {return preco;}
-    public void setPreco(String preco) {this.preco = preco;}
+    public double getPreco() {return preco;}
+    public void setPreco(double preco) {this.preco = preco;}
 
     public String getDuracao() {return duracao;}
     public void setDuracao(String duracao) {this.duracao = duracao;}

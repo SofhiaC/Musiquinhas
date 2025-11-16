@@ -27,11 +27,6 @@ public class AssinaturaView {
         grid.setVgap(40);
         grid.setAlignment(Pos.CENTER);
 
-        // Carregar assinaturas do banco
-        AssinaturaController controller = new AssinaturaController();
-        controller.inicializarAssinaturas();
-        var assinaturas = controller.listarAssinaturas();
-
         // Adiciona as assinaturas no grid dinamicamente (2 colunas)
         int col = 0;
         int row = 0;

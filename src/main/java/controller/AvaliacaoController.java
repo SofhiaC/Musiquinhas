@@ -40,4 +40,3 @@ public class AvaliacaoController {
         dao.deletar(id);
     }
 }
-
