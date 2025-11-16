@@ -70,7 +70,7 @@ public class PlaylistController {
         playlistDAO.criar(nova);
 
         txtNomePlaylist.clear();
-       // carregarPlaylists();
+        carregarPlaylists();
     }
 
 
@@ -94,7 +94,7 @@ public class PlaylistController {
         }
 
         playlistDAO.deletar(selecionada.getId());
-        //carregarPlaylists();
+        carregarPlaylists();
     }
 
     public void deletarPlaylist(Long playlistId) {
