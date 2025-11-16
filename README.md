@@ -34,14 +34,9 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
    ```
 
 4. **Login com usuário de teste:**
-- Email: sofhia@email.com   
-Senha: 1234
+- Email: email@example.com  
+Senha: senha
 
-- Email: joao@email.com  
-Senha: senha123
-
-- Email: maria@email.com  
-Senha: maria456
 
 
 ---
