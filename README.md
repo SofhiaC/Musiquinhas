@@ -37,10 +37,8 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
    mvn exec:java
    ```
 
-4. **Login com usuário de teste:**
-- Email: email@example.com  
-Senha: senha
-
+4. **Login com usuário existente: **
+   Verifique o arquivo seed ou a tabela " "usuarios" no MySQL.
 ---
 
 ## 🛠️ Tecnologias
