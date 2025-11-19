@@ -4,8 +4,7 @@ Sistema de Música com **JavaFX**, **JPA/EclipseLink** e **MySQL**.
 
 ## VIDEO EXPLICANDO O PROJETO
 
-[![Watch the video]( https://www.youtube.com/watch?v=2sksqYDlvJU
-)]
+[![Watch the video](src/images/Musiquinhas.png)] (https://www.youtube.com/watch?v=2sksqYDlvJU)
 
 ---
 
