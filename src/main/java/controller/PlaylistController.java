@@ -89,12 +89,12 @@ public class PlaylistController {
     }
 
 
-    public void criarPlaylist(String nome) {
+    public void criarPlaylist(String nome, Usuario usuario) {
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome da playlist não pode ser vazio");
         }
 
-        Playlist nova = new Playlist(nome.trim(), usuarioAtual);
+        Playlist nova = new Playlist(nome.trim(), usuario);
         playlistDAO.criar(nova);
     }
 

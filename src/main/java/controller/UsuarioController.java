@@ -74,4 +74,7 @@ public class UsuarioController {
         usuarioDao.deletar(usuarioId);
     }
 
+    public Usuario buscarPorId(Long id) {
+        return usuarioDao.buscarPorId(id);
+    }
 }
